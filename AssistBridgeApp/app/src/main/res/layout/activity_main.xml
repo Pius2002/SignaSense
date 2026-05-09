@@ -435,6 +435,14 @@
                         android:text="Repeat Guidance" />
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/blindNavigateButton"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Voice Navigation Map" />
+
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/blindStickButton"
                         style="@style/Widget.Material3.Button.TonalButton"
                         android:layout_width="match_parent"

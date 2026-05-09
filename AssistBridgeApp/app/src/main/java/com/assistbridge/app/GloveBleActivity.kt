@@ -58,6 +58,8 @@ class GloveBleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private val deviceName = "SignaSenseGlove"
 
     private lateinit var languageModel: AdaptiveSignLanguageModel
+    private lateinit var signsStore: UserDefinedSignsStore
+    private var userDefinedPatterns = emptyList<UserDefinedSignPattern>()
     private var bluetoothGatt: BluetoothGatt? = null
     private var dataCharacteristic: BluetoothGattCharacteristic? = null
     private var isScanning = false
@@ -222,9 +224,19 @@ class GloveBleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         ThemeSettings.apply(this)
         super.onCreate(savedInstanceState)
         languageModel = AdaptiveSignLanguageModel(this)
+        signsStore = UserDefinedSignsStore(this)
+        reloadUserDefinedPatterns()
         buildUi()
         tts = TextToSpeech(this, this)
         connectButton.setOnClickListener { beginConnection() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (::signsStore.isInitialized) {
+            reloadUserDefinedPatterns()
+            updateModeUi()
+        }
     }
 
     override fun onInit(status: Int) {
@@ -336,7 +348,7 @@ class GloveBleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             textSize = 16f
             setPadding(dp(14), dp(12), dp(14), dp(12))
             setBackground(roundedPanel(surface, border))
-            text = "Open your hand, press Calibrate, then hold a sign steady."
+            text = buildWorkflowText()
             layoutParams = blockParams(top = 8, bottom = 10)
         }
         root.addView(workflowText)
@@ -394,7 +406,7 @@ class GloveBleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun updateModeUi() {
         detectionModeButton.text = languageModel.modeTitle()
         workflowText.text =
-            "Open your hand, press Calibrate, then hold a sign steady.\n" +
+            buildWorkflowText() + "\n" +
                 languageModel.modeDescription()
     }
 
@@ -668,11 +680,13 @@ class GloveBleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
         }
 
-        val ruleLetter = bestRawLetter(states)
+        val trainedMatch = bestUserDefinedMatch(raw, bend)
+        val ruleLetter = trainedMatch?.pattern?.letter ?: bestRawLetter(states)
         val sensorActivity = hasUsefulSensorActivity(raw, bend, states)
         val letter = ruleLetter.ifBlank { presentationFallbackLetter(sensorActivity) }
 
         val message = when {
+            trainedMatch != null -> "Detected ${trainedMatch.pattern.letter} from saved training. Hold it steady."
             letter.isNotBlank() -> "Detected $letter. Hold it steady."
             raw.all { it <= 2 } -> "Waiting for finger movement."
             raw.all { it >= 4093 } -> "Finger readings are too high. Relax your hand and try again."
@@ -680,6 +694,21 @@ class GloveBleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             else -> "Keep holding the sign steady."
         }
         return AppLetterDetection(letter, message)
+    }
+
+    private fun reloadUserDefinedPatterns() {
+        userDefinedPatterns = signsStore.completePatterns()
+    }
+
+    private fun bestUserDefinedMatch(raw: IntArray, bend: IntArray): UserDefinedSignMatch? {
+        if (raw.size != appFingerNames.size || bend.size != appFingerNames.size) {
+            return null
+        }
+
+        return userDefinedPatterns
+            .map { pattern -> UserDefinedSignMatch(pattern, signsStore.patternDistance(raw, bend, pattern)) }
+            .filter { match -> match.distance <= match.pattern.tolerance }
+            .minByOrNull { it.distance }
     }
 
     private fun hasUsefulSensorActivity(raw: IntArray, bend: IntArray, states: Array<String>): Boolean {
@@ -831,6 +860,16 @@ class GloveBleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 "Main finger readings are ready. Continue signing."
             else -> status
         }
+    }
+
+    private fun buildWorkflowText(): String {
+        val savedCount = userDefinedPatterns.size
+        val savedText = if (savedCount > 0) {
+            "$savedCount saved trained sign${if (savedCount == 1) "" else "s"} will be used first."
+        } else {
+            "Train only the letters you need; saved signs stay on this phone."
+        }
+        return "Open your hand, press Calibrate, then hold a sign steady. $savedText"
     }
 
     private data class AppLetterDetection(

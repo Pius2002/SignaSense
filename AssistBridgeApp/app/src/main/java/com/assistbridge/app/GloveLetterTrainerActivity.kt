@@ -70,7 +70,7 @@ class GloveLetterTrainerActivity : AppCompatActivity(), TextToSpeech.OnInitListe
     private val prepMs = 3_000L
     private val captureMs = 1_500L
     private val testCaptureMs = 1_200L
-    private val requiredTestPasses = 5
+    private val requiredTestPasses = UserDefinedSignsStore.REQUIRED_TEST_PASSES
     private val minimumFramesPerCapture = 3
     private val minimumUsableSignals = 3
 
@@ -89,6 +89,7 @@ class GloveLetterTrainerActivity : AppCompatActivity(), TextToSpeech.OnInitListe
     private var activeTrainingLetters = emptyList<String>()
     private val captureFrames = mutableListOf<SensorFrame>()
     private val trainedPatterns = linkedMapOf<String, LetterPattern>()
+    private lateinit var signsStore: UserDefinedSignsStore
 
     private var tts: TextToSpeech? = null
     private var ttsReady = false
@@ -229,6 +230,7 @@ class GloveLetterTrainerActivity : AppCompatActivity(), TextToSpeech.OnInitListe
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeSettings.apply(this)
         super.onCreate(savedInstanceState)
+        signsStore = UserDefinedSignsStore(this)
         loadPatterns()
         buildUi()
         updateTrainingSummary()
@@ -851,51 +853,29 @@ class GloveLetterTrainerActivity : AppCompatActivity(), TextToSpeech.OnInitListe
 
     private fun loadPatterns() {
         trainedPatterns.clear()
-        val stored = getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
-            .getString(patternsKey, "")
-            .orEmpty()
-
-        stored.lineSequence()
-            .map { it.trim() }
-            .filter { it.isNotBlank() }
-            .forEach { line ->
-                val parts = line.split('|')
-                if (parts.size != 5) {
-                    return@forEach
-                }
-
-                val letter = parts[0]
-                val raw = parseIntCsv(parts[1])
-                val bend = parseIntCsv(parts[2])
-                val tolerance = parts[3].toIntOrNull() ?: 20
-                val passes = parts[4].toIntOrNull() ?: 0
-                if (letter.length == 1 && raw.size == fingerNames.size && bend.size == fingerNames.size) {
-                    trainedPatterns[letter] = LetterPattern(letter, raw, bend, tolerance, passes)
-                }
+        signsStore.loadPatterns().values.forEach { pattern ->
+            if (pattern.raw.size == fingerNames.size && pattern.bend.size == fingerNames.size) {
+                trainedPatterns[pattern.letter] = pattern.toLetterPattern()
             }
+        }
     }
 
     private fun savePatterns() {
-        val stored = trainedPatterns.values.joinToString("\n") { pattern ->
-            listOf(
-                pattern.letter,
-                pattern.raw.joinToString(","),
-                pattern.bend.joinToString(","),
-                pattern.tolerance.toString(),
-                pattern.testsPassed.toString(),
-            ).joinToString("|")
-        }
-
-        getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
-            .edit()
-            .putString(patternsKey, stored)
-            .apply()
+        signsStore.savePatterns(trainedPatterns.values.map { it.toUserDefinedPattern() })
     }
 
-    private fun parseIntCsv(value: String): IntArray {
-        return value.split(',')
-            .mapNotNull { it.trim().toIntOrNull() }
-            .toIntArray()
+    private fun UserDefinedSignPattern.toLetterPattern(): LetterPattern {
+        return LetterPattern(letter, raw, bend, tolerance, testsPassed)
+    }
+
+    private fun LetterPattern.toUserDefinedPattern(): UserDefinedSignPattern {
+        return UserDefinedSignPattern(
+            letter = letter,
+            raw = raw,
+            bend = bend,
+            tolerance = tolerance,
+            testsPassed = testsPassed,
+        )
     }
 
     private fun clearLocalPatterns() {
@@ -1147,8 +1127,4 @@ class GloveLetterTrainerActivity : AppCompatActivity(), TextToSpeech.OnInitListe
         COMPLETE,
     }
 
-    private companion object {
-        private const val preferencesName = "signasense_glove_letter_trainer"
-        private const val patternsKey = "patterns_v2"
-    }
 }

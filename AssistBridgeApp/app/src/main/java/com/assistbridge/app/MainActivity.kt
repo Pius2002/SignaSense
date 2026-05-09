@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.res.ColorStateList
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var isListening = false
     private var pendingAutoListen = false
     private var lastPrompt = ""
+    private var awaitingNavigationDestination = false
 
     private val stickBaseUrl = "http://192.168.5.1"
     private val stickPollHandler = Handler(Looper.getMainLooper())
@@ -170,10 +172,14 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         binding.blindListenButton.setOnClickListener {
-            cancelPendingVoiceFlow()
+            cancelPendingVoiceFlow(clearNavigationRequest = false)
             startVoiceCapture()
         }
         binding.blindRepeatButton.setOnClickListener { speakPrompt(blindDashboardPrompt(), autoListen = true) }
+        binding.blindNavigateButton.setOnClickListener {
+            cancelPendingVoiceFlow()
+            promptForNavigationDestination()
+        }
         binding.blindStickButton.setOnClickListener { openStickGuide() }
         binding.blindGloveButton.setOnClickListener { openGlovePage() }
         binding.blindGloveTrainerButton.setOnClickListener { openGloveTrainer() }
@@ -303,6 +309,11 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun handleVoiceInput(heardText: String) {
         val spoken = heardText.lowercase(Locale.getDefault())
 
+        if (currentStage == VoiceStage.DASHBOARD && awaitingNavigationDestination) {
+            handleNavigationDestination(heardText, spoken)
+            return
+        }
+
         when (currentStage) {
             VoiceStage.MODE_SELECT -> {
                 when {
@@ -335,6 +346,8 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         when {
             containsAny(spoken, "scan") -> sendStickCommand("/scan", announce = selectedMode == UserMode.BLIND)
             containsAny(spoken, "status", "distance") -> fetchStickStatus(announce = selectedMode == UserMode.BLIND)
+            containsAny(spoken, "navigate", "navigation", "map", "maps", "directions", "route", "go to", "take me to") ->
+                handleNavigationDestination(rawText, spoken)
             containsAny(spoken, "stick", "cane") -> openStickGuide()
             containsAny(spoken, "camera", "backup", "visual sign") -> openCameraGloveBackup()
             containsAny(spoken, "train glove", "glove training", "trainer", "train letters") -> openGloveTrainer()
@@ -346,7 +359,7 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             containsAny(spoken, "audio", "blind", "voice") -> switchToMode(UserMode.BLIND)
             containsAny(spoken, "home", "reset", "start over") -> resetOnboarding()
             else -> speakPrompt(
-                "I heard $rawText. Say stick, scan, status, glove, language, help, repeat, visual, or home.",
+                "I heard $rawText. Say navigate, stick, scan, status, glove, language, help, repeat, visual, or home.",
                 autoListen = true,
             )
         }
@@ -426,6 +439,97 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         startActivity(Intent(this, CameraSignActivity::class.java))
     }
 
+    private fun promptForNavigationDestination() {
+        awaitingNavigationDestination = true
+        speakPrompt(
+            "Where are you going? Say the destination, for example, navigate to the nearest hospital.",
+            autoListen = true,
+        )
+    }
+
+    private fun handleNavigationDestination(rawText: String, spoken: String) {
+        if (containsAny(spoken, "cancel", "stop", "back")) {
+            awaitingNavigationDestination = false
+            speakPrompt("Navigation cancelled. ${blindDashboardPrompt()}", autoListen = true)
+            return
+        }
+
+        val destination = extractNavigationDestination(rawText)
+        if (destination.isBlank()) {
+            promptForNavigationDestination()
+            return
+        }
+
+        awaitingNavigationDestination = false
+        openWalkingNavigation(destination)
+    }
+
+    private fun extractNavigationDestination(rawText: String): String {
+        var destination = rawText.trim()
+        val phrases = listOf(
+            "navigate to",
+            "navigation to",
+            "directions to",
+            "route to",
+            "maps to",
+            "map to",
+            "take me to",
+            "go to",
+            "navigate",
+            "navigation",
+            "directions",
+            "route",
+            "maps",
+            "map",
+        )
+
+        val lower = destination.lowercase(Locale.getDefault())
+        val matchedPhrase = phrases.firstOrNull { phrase -> lower.startsWith(phrase) }
+        if (matchedPhrase != null) {
+            destination = destination.drop(matchedPhrase.length).trim()
+        }
+
+        return destination
+            .removePrefix("to ")
+            .trim()
+            .trim('.', ',', ';', ':')
+    }
+
+    private fun openWalkingNavigation(destination: String) {
+        val encodedDestination = Uri.encode(destination)
+        val mapsIntent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse("google.navigation:q=$encodedDestination&mode=w"),
+        ).apply {
+            setPackage("com.google.android.apps.maps")
+        }
+        val fallbackMapsIntent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse("google.navigation:q=$encodedDestination&mode=w"),
+        )
+        val webIntent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse("https://www.google.com/maps/dir/?api=1&destination=$encodedDestination&travelmode=walking"),
+        )
+
+        val selectedIntent = when {
+            mapsIntent.resolveActivity(packageManager) != null -> mapsIntent
+            fallbackMapsIntent.resolveActivity(packageManager) != null -> fallbackMapsIntent
+            else -> webIntent
+        }
+
+        try {
+            startActivity(selectedIntent)
+            val message = "Starting walking navigation to $destination. Follow the map voice guidance."
+            setStatus(message)
+            speakPrompt(message, autoListen = false)
+        } catch (_: Exception) {
+            val message = "No navigation app could open. Install or enable Google Maps, then try again."
+            setStatus(message)
+            speakPrompt(message, autoListen = false)
+        }
+    }
+
     private fun openStickPage() {
         setStatus("Opening the smart stick page at 192 point 168 point 5 point 1.")
         startActivity(
@@ -495,7 +599,10 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         return (value * resources.displayMetrics.density).toInt()
     }
 
-    private fun cancelPendingVoiceFlow() {
+    private fun cancelPendingVoiceFlow(clearNavigationRequest: Boolean = true) {
+        if (clearNavigationRequest) {
+            awaitingNavigationDestination = false
+        }
         pendingAutoListen = false
         isListening = false
         speechRecognizer?.cancel()
@@ -730,22 +837,22 @@ class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun blindDashboardPrompt(): String {
         return when (selectedLanguage) {
             AppLanguage.ENGLISH ->
-                "English selected. Say stick for smart stick status, scan to start a stick scan, glove to open the smart glove BLE screen, train glove to train letters, camera for camera sign backup, language to change language, help for commands, or visual to switch to the visual interface."
+                "English selected. Say navigate to start walking directions, stick for smart stick status, scan to start a stick scan, glove to open the smart glove BLE screen, train glove to train letters, camera for camera sign backup, language to change language, help for commands, or visual to switch to the visual interface."
 
             AppLanguage.LUGANDA ->
-                "Luganda selected. This phone may still speak English if Luganda speech is unavailable. Say stick, scan, status, glove, train glove, camera, language, help, or visual."
+                "Luganda selected. This phone may still speak English if Luganda speech is unavailable. Say navigate, stick, scan, status, glove, train glove, camera, language, help, or visual."
 
             AppLanguage.ACHOLI ->
-                "Acholi selected. This phone may still speak English if Acholi speech is unavailable. Say stick, scan, status, glove, train glove, camera, language, help, or visual."
+                "Acholi selected. This phone may still speak English if Acholi speech is unavailable. Say navigate, stick, scan, status, glove, train glove, camera, language, help, or visual."
         }
     }
 
     private fun commandHelp(): String {
-        return "Available commands are stick, scan, status, glove, train glove, camera, language, help, repeat, visual, audio, and home."
+        return "Available commands are navigate, stick, scan, status, glove, train glove, camera, language, help, repeat, visual, audio, and home."
     }
 
     private fun commandSummary(): String {
-        return "stick, scan, status, glove, train glove, camera, language, help, repeat, visual, audio, home"
+        return "navigate, stick, scan, status, glove, train glove, camera, language, help, repeat, visual, audio, home"
     }
 
     private fun parseLanguage(spoken: String): AppLanguage? {
