@@ -1,0 +1,7 @@
+pyautogui
+numpy
+opencv-python
+mediapipe
+joblib
+scikit-learn
+streamlit

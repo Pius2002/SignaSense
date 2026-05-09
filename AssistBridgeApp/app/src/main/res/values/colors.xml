@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="assist_background">#F4F8F5</color>
+    <color name="assist_surface">#FFFFFF</color>
+    <color name="assist_primary">#0A7A4B</color>
+    <color name="assist_primary_dark">#085936</color>
+    <color name="assist_on_primary">#FFFFFF</color>
+    <color name="assist_text">#101612</color>
+    <color name="assist_muted">#4F5E55</color>
+    <color name="assist_alert">#D94436</color>
+    <color name="assist_overlay">#E7F0EA</color>
+    <color name="assist_border">#C7D5CC</color>
+    <color name="assist_success_surface">#DFF8EA</color>
+    <color name="assist_alert_surface">#FFE8E6</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+</resources>

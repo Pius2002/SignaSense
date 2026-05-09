@@ -1,0 +1,63 @@
+21:37:30.815 BT speaker: connected | Distance: 18.2 cm | 0.18 m | 0 m 18.2 cm | range: very_close | trend: stable | scan: right | left best: 22.2 cm, right best: 195.5 cm | guidance: Scan right slowly
+21:37:30.819 Scan result left best: 22.2 cm / 0.22 m, right best: 195.5 cm / 1.96 m. Guidance: Right seems clearer
+21:37:30.944 BT speaker: connected | Distance: invalid/no echo | guidance: No sensor echo
+21:37:31.295 BT speaker: connected | Distance: 15.2 cm | 0.15 m | 0 m 15.2 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:31.835 BT speaker: connected | Distance: 15.6 cm | 0.16 m | 0 m 15.6 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:32.519 BT speaker: connected | Distance: 16.0 cm | 0.16 m | 0 m 16.0 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:32.866 BT speaker: connected | Distance: 29.7 cm | 0.30 m | 0 m 29.7 cm | range: close | trend: opening | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:33.399 BT speaker: connected | Distance: 14.7 cm | 0.15 m | 0 m 14.7 cm | range: very_close | trend: closing | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:33.939 BT speaker: connected | Distance: 13.9 cm | 0.14 m | 0 m 13.9 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:34.478 BT speaker: connected | Distance: 5.9 cm | 0.06 m | 0 m 5.9 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:35.018 BT speaker: connected | Distance: 4.5 cm | 0.04 m | 0 m 4.5 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:35.559 BT speaker: connected | Distance: 4.1 cm | 0.04 m | 0 m 4.1 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:36.097 BT speaker: connected | Distance: 4.2 cm | 0.04 m | 0 m 4.2 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:36.638 BT speaker: connected | Distance: 4.2 cm | 0.04 m | 0 m 4.2 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:37.173 BT speaker: connected | Distance: 3.8 cm | 0.04 m | 0 m 3.8 cm | range: very_close | trend: stable | scan: result | left best: 22.2 cm, right best: 195.5 cm | guidance: Right seems clearer
+21:37:37.802 BT speaker: connected | Distance: 7.0 cm | 0.07 m | 0 m 7.0 cm | range: very_close | trend: stable | scan: idle | guidance: Stop now
+21:37:38.458 BT speaker: connected | Distance: 191.9 cm | 1.92 m | 1 m 91.9 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:38.986 BT speaker: connected | Distance: 191.9 cm | 1.92 m | 1 m 91.9 cm | range: caution | trend: opening | scan: idle | guidance: Move forward carefully
+21:37:39.510 BT speaker: connected | Distance: 192.0 cm | 1.92 m | 1 m 92.0 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:40.018 BT speaker: connected | Distance: 192.2 cm | 1.92 m | 1 m 92.2 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:40.533 BT speaker: connected | Distance: 192.3 cm | 1.92 m | 1 m 92.3 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:41.040 BT speaker: connected | Distance: 191.8 cm | 1.92 m | 1 m 91.8 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:41.627 BT speaker: connected | Distance: 189.5 cm | 1.90 m | 1 m 89.5 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:42.154 BT speaker: connected | Distance: 192.2 cm | 1.92 m | 1 m 92.2 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:42.674 BT speaker: connected | Distance: 192.0 cm | 1.92 m | 1 m 92.0 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:43.201 BT speaker: connected | Distance: 192.2 cm | 1.92 m | 1 m 92.2 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:43.725 BT speaker: connected | Distance: 192.2 cm | 1.92 m | 1 m 92.2 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:44.252 BT speaker: connected | Distance: 191.8 cm | 1.92 m | 1 m 91.8 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:44.779 BT speaker: connected | Distance: 191.9 cm | 1.92 m | 1 m 91.9 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:45.304 BT speaker: connected | Distance: 191.9 cm | 1.92 m | 1 m 91.9 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:45.831 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:46.357 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:46.878 BT speaker: connected | Distance: 191.9 cm | 1.92 m | 1 m 91.9 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:47.406 BT speaker: connected | Distance: 192.3 cm | 1.92 m | 1 m 92.3 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:47.930 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:48.454 BT speaker: connected | Distance: 192.0 cm | 1.92 m | 1 m 92.0 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:48.975 BT speaker: connected | Distance: 191.9 cm | 1.92 m | 1 m 91.9 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:49.509 BT speaker: connected | Distance: 191.7 cm | 1.92 m | 1 m 91.7 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:50.028 BT speaker: connected | Distance: 191.8 cm | 1.92 m | 1 m 91.8 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:50.556 BT speaker: connected | Distance: 192.2 cm | 1.92 m | 1 m 92.2 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:51.083 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:51.610 BT speaker: connected | Distance: 192.2 cm | 1.92 m | 1 m 92.2 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:52.137 BT speaker: connected | Distance: 192.7 cm | 1.93 m | 1 m 92.7 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:52.664 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:53.191 BT speaker: connected | Distance: 192.2 cm | 1.92 m | 1 m 92.2 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:53.718 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:54.241 BT speaker: connected | Distance: 191.9 cm | 1.92 m | 1 m 91.9 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:54.766 BT speaker: connected | Distance: 192.3 cm | 1.92 m | 1 m 92.3 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:55.292 BT speaker: connected | Distance: 192.4 cm | 1.92 m | 1 m 92.4 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:55.819 BT speaker: connected | Distance: 192.0 cm | 1.92 m | 1 m 92.0 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:56.338 BT speaker: connected | Distance: 191.9 cm | 1.92 m | 1 m 91.9 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:56.865 BT speaker: connected | Distance: 192.5 cm | 1.92 m | 1 m 92.5 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:57.392 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:57.919 BT speaker: connected | Distance: 192.4 cm | 1.92 m | 1 m 92.4 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:58.440 BT speaker: connected | Distance: 192.4 cm | 1.92 m | 1 m 92.4 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:58.967 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:37:59.493 BT speaker: connected | Distance: 192.4 cm | 1.92 m | 1 m 92.4 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:38:00.020 BT speaker: connected | Distance: 192.0 cm | 1.92 m | 1 m 92.0 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:38:00.547 BT speaker: connected | Distance: 192.4 cm | 1.92 m | 1 m 92.4 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:38:01.075 BT speaker: connected | Distance: 192.4 cm | 1.92 m | 1 m 92.4 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:38:01.601 BT speaker: connected | Distance: 192.4 cm | 1.92 m | 1 m 92.4 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:38:02.129 BT speaker: connected | Distance: 192.4 cm | 1.92 m | 1 m 92.4 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully
+21:38:02.656 BT speaker: connected | Distance: 192.3 cm | 1.92 m | 1 m 92.3 cm | range: caution | trend: stable | scan: idle | guidance: Move forward carefully

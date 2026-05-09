@@ -1,0 +1,34 @@
+# Android / Gradle build output
+**/build/
+**/.gradle/
+.idea/
+*.iml
+local.properties
+
+# Generated application packages
+*.apk
+*.aab
+
+# Downloaded installers and local tool distributions
+*.zip
+*.msi
+*.exe
+tools/gradle-*/
+
+# Local render/test scratch output
+**/__pycache__/
+*.pyc
+~$*
+report/erd_render_check/
+report/rendered_formatted_report/
+report/presentation_preview/
+report/pptx_media_extract/
+report/*_render/
+report/*_render_keep/
+report/chapter_six_render/
+reports/*_render/
+
+# OS/editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store

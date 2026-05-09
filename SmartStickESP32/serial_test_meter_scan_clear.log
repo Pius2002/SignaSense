@@ -1,0 +1,50 @@
+22:27:28.999 BT speaker: connected | Distance: 90.7 cm | 0.91 m | 0 m 90.7 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:29.447 BT speaker: connected | Distance: 192.8 cm | 1.93 m | 1 m 92.8 cm | range: caution | trend: stable | scan: idle | guidance: Clear beyond warning range
+22:27:29.917 BT speaker: connected | Distance: 90.6 cm | 0.91 m | 0 m 90.6 cm | range: warning | trend: closing | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:30.456 Voice event: obstacle at 90.6 cm
+22:27:30.468 BT speaker: connected | Distance: 90.6 cm | 0.91 m | 0 m 90.6 cm | range: warning | trend: closing | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:31.033 BT speaker: connected | Distance: 91.1 cm | 0.91 m | 0 m 91.1 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:31.580 BT speaker: connected | Distance: 90.7 cm | 0.91 m | 0 m 90.7 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:32.129 BT speaker: connected | Distance: 91.5 cm | 0.92 m | 0 m 91.5 cm | range: warning | trend: opening | scan: idle | guidance: Move forward carefully
+22:27:32.718 BT speaker: connected | Distance: 192.8 cm | 1.93 m | 1 m 92.8 cm | range: caution | trend: stable | scan: idle | guidance: Clear beyond warning range
+22:27:33.204 BT speaker: connected | Distance: 91.4 cm | 0.91 m | 0 m 91.4 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:33.698 BT speaker: connected | Distance: 91.4 cm | 0.91 m | 0 m 91.4 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:34.213 BT speaker: connected | Distance: 90.9 cm | 0.91 m | 0 m 90.9 cm | range: warning | trend: closing | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:34.759 BT speaker: connected | Distance: 90.3 cm | 0.90 m | 0 m 90.3 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:35.376 BT speaker: connected | Distance: 194.2 cm | 1.94 m | 1 m 94.2 cm | range: caution | trend: stable | scan: idle | guidance: Clear beyond warning range
+22:27:35.989 BT speaker: connected | Distance: 91.3 cm | 0.91 m | 0 m 91.3 cm | range: warning | trend: opening | scan: idle | guidance: Move forward carefully
+22:27:36.480 BT speaker: connected | Distance: 91.1 cm | 0.91 m | 0 m 91.1 cm | range: warning | trend: closing | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:36.988 BT speaker: connected | Distance: 90.5 cm | 0.91 m | 0 m 90.5 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:37.252 Voice event: obstacle at 90.9 cm
+22:27:37.565 BT speaker: connected | Distance: 192.4 cm | 1.92 m | 1 m 92.4 cm | range: caution | trend: opening | scan: idle | guidance: Clear beyond warning range
+22:27:38.090 BT speaker: connected | Distance: 90.9 cm | 0.91 m | 0 m 90.9 cm | range: warning | trend: opening | scan: idle | guidance: Move forward carefully
+22:27:38.635 BT speaker: connected | Distance: 192.9 cm | 1.93 m | 1 m 92.9 cm | range: caution | trend: closing | scan: idle | guidance: Clear beyond warning range
+22:27:39.158 BT speaker: connected | Distance: 193.0 cm | 1.93 m | 1 m 93.0 cm | range: caution | trend: opening | scan: idle | guidance: Clear beyond warning range
+22:27:39.633 BT speaker: connected | Distance: 91.2 cm | 0.91 m | 0 m 91.2 cm | range: warning | trend: closing | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:40.191 BT speaker: connected | Distance: 91.2 cm | 0.91 m | 0 m 91.2 cm | range: warning | trend: closing | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:40.731 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: stable | scan: idle | guidance: Clear beyond warning range
+22:27:41.304 BT speaker: connected | Distance: 91.8 cm | 0.92 m | 0 m 91.8 cm | range: warning | trend: opening | scan: idle | guidance: Move forward carefully
+22:27:41.874 BT speaker: connected | Distance: 192.1 cm | 1.92 m | 1 m 92.1 cm | range: caution | trend: closing | scan: idle | guidance: Clear beyond warning range
+22:27:42.417 BT speaker: connected | Distance: 91.5 cm | 0.92 m | 0 m 91.5 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:43.002 BT speaker: connected | Distance: 192.6 cm | 1.93 m | 1 m 92.6 cm | range: caution | trend: stable | scan: idle | guidance: Clear beyond warning range
+22:27:43.579 BT speaker: connected | Distance: 192.0 cm | 1.92 m | 1 m 92.0 cm | range: caution | trend: stable | scan: idle | guidance: Clear beyond warning range
+22:27:43.991 Voice event: obstacle at 91.4 cm
+22:27:44.086 BT speaker: connected | Distance: 91.4 cm | 0.91 m | 0 m 91.4 cm | range: warning | trend: opening | scan: idle | guidance: Move forward carefully
+22:27:44.810 BT speaker: connected | Distance: 193.3 cm | 1.93 m | 1 m 93.3 cm | range: caution | trend: stable | scan: idle | guidance: Clear beyond warning range
+22:27:45.332 BT speaker: connected | Distance: 193.0 cm | 1.93 m | 1 m 93.0 cm | range: caution | trend: stable | scan: idle | guidance: Clear beyond warning range
+22:27:46.006 BT speaker: connected | Distance: 192.5 cm | 1.92 m | 1 m 92.5 cm | range: caution | trend: stable | scan: idle | guidance: Clear beyond warning range
+22:27:46.405 BT speaker: connected | Distance: 91.1 cm | 0.91 m | 0 m 91.1 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:46.977 BT speaker: connected | Distance: 91.5 cm | 0.91 m | 0 m 91.5 cm | range: warning | trend: closing | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:47.489 BT speaker: connected | Distance: 91.5 cm | 0.91 m | 0 m 91.5 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:48.078 BT speaker: connected | Distance: 91.0 cm | 0.91 m | 0 m 91.0 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:48.819 BT speaker: connected | Distance: 194.7 cm | 1.95 m | 1 m 94.7 cm | range: caution | trend: opening | scan: idle | guidance: Clear beyond warning range
+22:27:49.453 BT speaker: connected | Distance: 193.7 cm | 1.94 m | 1 m 93.7 cm | range: caution | trend: opening | scan: idle | guidance: Clear beyond warning range
+22:27:49.950 BT speaker: connected | Distance: 91.4 cm | 0.91 m | 0 m 91.4 cm | range: warning | trend: closing | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:50.010 Voice event: obstacle at 91.5 cm
+22:27:50.473 BT speaker: connected | Distance: 91.6 cm | 0.92 m | 0 m 91.6 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:51.002 BT speaker: connected | Distance: 91.2 cm | 0.91 m | 0 m 91.2 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:51.565 BT speaker: connected | Distance: 90.4 cm | 0.90 m | 0 m 90.4 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:52.105 BT speaker: connected | Distance: 90.7 cm | 0.91 m | 0 m 90.7 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:52.679 BT speaker: connected | Distance: 91.6 cm | 0.92 m | 0 m 91.6 cm | range: warning | trend: stable | scan: idle | guidance: Obstacle ahead. Move carefully
+22:27:53.220 BT speaker: connected | Distance: 193.0 cm | 1.93 m | 1 m 93.0 cm | range: caution | trend: opening | scan: idle | guidance: Clear beyond warning range
+22:27:53.749 BT speaker: connected | Distance: 192.5 cm | 1.93 m | 1 m 92.5 cm | range: caution | trend: opening | scan: idle | guidance: Clear beyond warning range
